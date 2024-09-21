@@ -27,17 +27,11 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9.10.0  
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm run build
+          version: 9.10.0
 
       - name: Get pnpm store directory
         id: pnpm-cache
-        shell: zsh
+        shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
@@ -48,8 +42,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Commit and Push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
@@ -61,4 +58,3 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
