@@ -3,11 +3,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: '/mapaDPVyU/',
+  base: "/mapaDPVyU/",
   plugins: [
     react(),
     VitePWA({
-      registerType: "prompt",
+      registerType: "autoUpdate",
       injectRegister: false,
 
       pwaAssets: {
@@ -70,6 +70,8 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,svg,png,ico}"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
+        navigateFallback: "/index.html", // Ruta fallback en caso de que no se encuentre una ruta
+        navigateFallbackAllowlist: [/^\/mapaDPVyU\//], // Permitir la ruta "/mapaDPVyU/"
       },
 
       devOptions: {
