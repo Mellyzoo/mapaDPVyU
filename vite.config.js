@@ -26,25 +26,25 @@ export default defineConfig({
         orientation: "portrait",
         icons: [
           {
-            src: "public/icons/pwa-64x64.png",
+            src: "/mapaDPVyU/public/icons/pwa-64x64.png",
             sizes: "64x64",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "public/icons/pwa-192x192.png",
+            src: "/mapaDPVyU/public/icons/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "public/icons/pwa-512x512.png",
+            src: "/mapaDPVyU/public/icons/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "public/icons/maskable-icon-512x512.png",
+            src: "/mapaDPVyU/public/icons/maskable-icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -52,13 +52,13 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: "public/screenshots/screenshot-desktop.png",
+            src: "/mapaDPVyU/public/screenshots/screenshot-desktop.png",
             sizes: "1280x720",
             type: "image/png",
             form_factor: "wide",
           },
           {
-            src: "public/screenshots/screenshot-mobile.png",
+            src: "/mapaDPVyU/public/screenshots/screenshot-mobile.png",
             sizes: "720x1280",
             type: "image/png",
             form_factor: "narrow",
@@ -67,7 +67,25 @@ export default defineConfig({
       },
 
       workbox: {
-        globPatterns: ["**/*.{js,css,html,svg,png,ico}"],
+        globPatterns: [
+          "**/*.{js,css,html,svg,png,ico}",
+          "public/icons/*.{png,svg}",
+          "public/screenshots/*.png",
+        ],
+        runtimeCaching: [
+          {
+            urlPattern:
+              /^https:\/\/mellyzoo\.github\.io\/mapaDPVyU\/public\/icons\//,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "icon-cache",
+              expiration: {
+                maxEntries: 10,
+              },
+            },
+          },
+        ],
+
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         navigateFallback: "/index.html", // Ruta fallback en caso de que no se encuentre una ruta
