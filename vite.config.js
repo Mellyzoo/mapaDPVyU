@@ -10,11 +10,6 @@ export default defineConfig({
       registerType: "autoUpdate",
       injectRegister: false,
 
-      pwaAssets: {
-        disabled: false,
-        config: true,
-      },
-
       manifest: {
         name: "mapDPVYU",
         short_name: "mapDPVYU",
@@ -26,25 +21,25 @@ export default defineConfig({
         orientation: "portrait",
         icons: [
           {
-            src: "/mapaDPVyU/public/icons/pwa-64x64.png",
+            src: "/icons/pwa-64x64.png",
             sizes: "64x64",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/mapaDPVyU/public/icons/pwa-192x192.png",
+            src: "/icons/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/mapaDPVyU/public/icons/pwa-512x512.png",
+            src: "/icons/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/mapaDPVyU/public/icons/maskable-icon-512x512.png",
+            src: "/icons/maskable-icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -52,13 +47,13 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: "/mapaDPVyU/public/screenshots/screenshot-desktop.png",
+            src: "/screenshots/screenshot-desktop.png",
             sizes: "1280x720",
             type: "image/png",
             form_factor: "wide",
           },
           {
-            src: "/mapaDPVyU/public/screenshots/screenshot-mobile.png",
+            src: "/screenshots/screenshot-mobile.png",
             sizes: "720x1280",
             type: "image/png",
             form_factor: "narrow",
@@ -74,21 +69,25 @@ export default defineConfig({
         ],
         runtimeCaching: [
           {
-            urlPattern:
-              /^https:\/\/mellyzoo\.github\.io\/mapaDPVyU\/public\/icons\//,
+            urlPattern: /^https:\/\/\w+\.tile\.openstreetmap\.org\/.*/i,
             handler: "CacheFirst",
             options: {
-              cacheName: "icon-cache",
+              cacheName: "osm-tiles",
               expiration: {
-                maxEntries: 10,
+                maxEntries: 200,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 días
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
               },
             },
           },
+          // ... tus otras configuraciones de runtimeCaching ...
         ],
 
         cleanupOutdatedCaches: true,
         clientsClaim: true,
-        navigateFallback: "/index.html", // Ruta fallback en caso de que no se encuentre una ruta
+        navigateFallback: "/mapaDPVyU/index.html", // Ruta fallback en caso de que no se encuentre una ruta
         navigateFallbackAllowlist: [/^\/mapaDPVyU\//], // Permitir la ruta "/mapaDPVyU/"
       },
 
