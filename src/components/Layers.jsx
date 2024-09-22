@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
 import { FeatureGroup, LayersControl, Marker, Popup } from "react-leaflet";
 
+
+
 // Sample data (replace with real data)
 const edificios = [
   { id: 1, letra: "A", numero: 101, lat: -32.9, lng: -60.6 },
