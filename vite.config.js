@@ -18,8 +18,8 @@ export default defineConfig({
       manifest: {
         name: "mapDPVYU",
         short_name: "mapDPVYU",
-        start_url: "/",
-        scope: "/",
+        start_url: "/mapaDPVyU/",
+        scope: "/mapaDPVyU/",
         description: "app to geolocalization build and house",
         theme_color: "#ffffff",
         display: "minimal-ui",
