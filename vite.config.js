@@ -11,8 +11,8 @@ export default defineConfig({
       injectRegister: false,
 
       manifest: {
-        name: "mapDPVYU",
-        short_name: "mapDPVYU",
+        name: "mapaDPVyU",
+        short_name: "mapaDPVyU",
         start_url: "/mapaDPVyU/",
         scope: "/mapaDPVyU/",
         description: "app to geolocalization build and house",
@@ -70,7 +70,7 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/\w+\.tile\.openstreetmap\.org\/.*/i,
-            handler: "CacheFirst",
+            handler: "NetworkFirst",
             options: {
               cacheName: "osm-tiles",
               expiration: {
