@@ -15,31 +15,31 @@ export default defineConfig({
         short_name: "mapaDPVyU",
         start_url: "/mapaDPVyU/",
         scope: "/mapaDPVyU/",
-        description: "app to geolocalization build and house",
+        description: "app para geolocalizar edificios y domicilios",
         theme_color: "#ffffff",
         display: "minimal-ui",
         orientation: "portrait",
         icons: [
           {
-            src: "/icons/pwa-64x64.png",
+            src: "./icons/pwa-64x64.png",
             sizes: "64x64",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/icons/pwa-192x192.png",
+            src: "./icons/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/icons/pwa-512x512.png",
+            src: "./icons/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/icons/maskable-icon-512x512.png",
+            src: "./icons/maskable-icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -47,13 +47,13 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: "/screenshots/screenshot-desktop.png",
+            src: "./screenshots/screenshot-desktop.png",
             sizes: "1280x720",
             type: "image/png",
             form_factor: "wide",
           },
           {
-            src: "/screenshots/screenshot-mobile.png",
+            src: "./screenshots/screenshot-mobile.png",
             sizes: "720x1280",
             type: "image/png",
             form_factor: "narrow",
