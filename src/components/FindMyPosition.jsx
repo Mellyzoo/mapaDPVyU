@@ -12,25 +12,24 @@ export function FindMyPosition() {
       map.flyTo(e.latlng, map.getZoom());
     });
   };
-
   return (
     <>
       <button
         onClick={handleFindPosition}
         style={{
           position: "absolute",
-          bottom: "20px",   // Separación desde el borde inferior
-          right: "20px",    // Separación desde el borde derecho
+          bottom: "20px",
+          right: "20px",
           zIndex: 1000,
-          padding: "10px 15px", // Tamaño del botón
-          borderRadius: "5px",  // Bordes redondeados
-          backgroundColor: "#007bff", // Color de fondo (puedes cambiarlo)
-          color: "white",  // Color del texto
-          border: "none",  // Sin borde
-          cursor: "pointer", // Cursor al pasar por el botón
+          padding: "10px 15px",
+          borderRadius: "5px",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          cursor: "pointer",
         }}
       >
-        🧭 Mi posición
+        🧭
       </button>
       {position !== null && <Marker position={position} />}
     </>

@@ -3,13 +3,13 @@ import { FeatureGroup, LayersControl, Marker, Popup } from "react-leaflet";
 
 // Sample data (replace with real data)
 const edificios = [
-  { id: 1, letra: "A", numero: 101, lat: -32.9, lng: -60.6 },
-  { id: 2, letra: "B", numero: 201, lat: -32.91, lng: -60.61 },
+  { id: 1, letra: "A", numero: 101, plan: 1234, lat: -32.9, lng: -60.6 },
+  { id: 2, letra: "B", numero: 201, plan: 2225, lat: -32.91, lng: -60.61 },
 ];
 
 const viviendas = [
-  { id: 3, numero: 1001, lat: -32.92, lng: -60.62 },
-  { id: 4, numero: 1002, lat: -32.93, lng: -60.63 },
+  { id: 3, numero: 1001, plan: 555, lat: -32.92, lng: -60.62 },
+  { id: 4, numero: 1002, plan: 666, lat: -32.93, lng: -60.63 },
 ];
 
 const useFilteredData = (data, filters) => {
@@ -18,7 +18,8 @@ const useFilteredData = (data, filters) => {
       (item) =>
         (!filters.letra ||
           item.letra?.toLowerCase().includes(filters.letra.toLowerCase())) &&
-        (!filters.numero || item.numero.toString().includes(filters.numero))
+        (!filters.numero || item.numero.toString().includes(filters.numero)) &&
+        (!filters.plan || item.plan.toString().includes(filters.plan))
     );
   }, [data, filters]);
 };
@@ -53,18 +54,20 @@ export const Layers = () => {
               <Marker key={edificio.id} position={[edificio.lat, edificio.lng]}>
                 <Popup>
                   Edificio {edificio.letra}
-                  {edificio.numero}
+                  {edificio.numero} {edificio.plan}
                 </Popup>
               </Marker>
             ))}
           </FeatureGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay checked name="Casas">
+        <LayersControl.Overlay checked name="Viviendas">
           <FeatureGroup>
             {viviendasFiltradas.map((vivienda) => (
               <Marker key={vivienda.id} position={[vivienda.lat, vivienda.lng]}>
-                <Popup>Casa {vivienda.numero}</Popup>
+                <Popup>
+                  Casa {vivienda.numero} {vivienda.plan}
+                </Popup>
               </Marker>
             ))}
           </FeatureGroup>
@@ -90,6 +93,16 @@ export const Layers = () => {
           autoComplete="off"
           value={filters.numero}
           onChange={(e) => setFilters({ ...filters, numero: e.target.value })}
+          style={inputStyle}
+        />
+        <input
+          type="text"
+          name="plan"
+          id="plan"
+          placeholder="Filtrar por plan"
+          autoComplete="off"
+          value={filters.plan}
+          onChange={(e) => setFilters({ ...filters, plan: e.target.value })}
           style={inputStyle}
         />
       </form>

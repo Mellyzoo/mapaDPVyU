@@ -62,7 +62,7 @@ function App() {
       <MapComponent />
       <FindMyPosition />
       <PWABadge />
-      <Layers style={{ zIndex: 100}} />
+      <Layers  />
     </MapContainer>
   );
 }
