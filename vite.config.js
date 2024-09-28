@@ -9,17 +9,29 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: false,
+      devOptions: {
+        enabled: true,
+        navigateFallback: "index.html",
+        suppressWarnings: true,
+        type: "module",
+      },
 
       manifest: {
         name: "mapaDPVyU",
+        id: "/mapaDPVyU/",
         short_name: "mapaDPVyU",
-        start_url: "/mapaDPVyU/",
-        scope: "/mapaDPVyU/",
+        start_url: "/",
+        scope: "/",
         description: "app para geolocalizar edificios y domicilios",
         theme_color: "#ffffff",
-        display: "minimal-ui",
+        display: "standalone",
         orientation: "portrait",
         icons: [
+          {
+            src: "./icons/favicon.ico", // Ruta a tu favicon
+            sizes: "32x32", // Tamaños del favicon
+            type: "image/x-icon", // Tipo MIME para .ico
+          },
           {
             src: "./icons/pwa-64x64.png",
             sizes: "64x64",
@@ -62,11 +74,13 @@ export default defineConfig({
       },
 
       workbox: {
+        globDirectory: "/home/lean/Desktop/mapDPVYU/",
         globPatterns: [
-          "**/*.{js,css,html,svg,png,ico}",
-          "public/icons/*.{png,svg}",
+          "**/*.{js,jsx,md,yaml,css,html,png,ico}",
+          "public/icons/*.{png,ico}",
           "public/screenshots/*.png",
         ],
+        globIgnores: ["**/node_modules/**/*", "sw.js", "workbox-*.js"],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/\w+\.tile\.openstreetmap\.org\/.*/i,
@@ -89,13 +103,6 @@ export default defineConfig({
         clientsClaim: true,
         navigateFallback: "/mapaDPVyU/index.html", // Ruta fallback en caso de que no se encuentre una ruta
         navigateFallbackAllowlist: [/^\/mapaDPVyU\//], // Permitir la ruta "/mapaDPVyU/"
-      },
-
-      devOptions: {
-        enabled: true,
-        navigateFallback: "index.html",
-        suppressWarnings: true,
-        type: "module",
       },
     }),
   ],

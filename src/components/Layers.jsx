@@ -195,7 +195,7 @@ export const Layers = () => {
   return (
     <>
       <LayersControl position="topright">
-        <LayersControl.Overlay checked name="Edificios">
+        <LayersControl.Overlay checked id="Edificios" name="Edificios">
           <FeatureGroup>
             {edificiosFiltrados.map((edificio) => (
               <Marker key={edificio.id} position={[edificio.lat, edificio.lng]}>
@@ -207,7 +207,7 @@ export const Layers = () => {
           </FeatureGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay checked name="Viviendas">
+        <LayersControl.Overlay checked id="Viviendas" name="Viviendas">
           <FeatureGroup>
             {viviendasFiltradas.map((vivienda) => (
               <Marker key={vivienda.id} position={[vivienda.lat, vivienda.lng]}>
@@ -220,7 +220,7 @@ export const Layers = () => {
         </LayersControl.Overlay>
       </LayersControl>
 
-      <form className="leaflet-control" name="search" style={searchFormStyle}>
+      <form className="leaflet-control" id="search" name="search" style={searchFormStyle}>
         <input
           type="text"
           name="edificio"
