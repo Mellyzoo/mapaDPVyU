@@ -3,6 +3,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      external: ['sharp'], // Marca sharp como externo para que no lo procese
+    },
+  },
+  optimizeDeps: {
+    exclude: ['sharp'], // Evita que Vite trate de optimizar 'sharp'
+  },
   base: "/mapaDPVyU/",
   plugins: [
     react(),
@@ -76,7 +84,7 @@ export default defineConfig({
       workbox: {
         globDirectory: "/home/lean/Desktop/mapDPVYU/",
         globPatterns: [
-          "**/*.{js,jsx,md,yaml,css,html,png,ico}",
+          "**/*.{js,css,html,png,ico}",
           "public/icons/*.{png,ico}",
           "public/screenshots/*.png",
         ],

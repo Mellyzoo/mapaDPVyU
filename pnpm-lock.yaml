@@ -24,12 +24,15 @@ importers:
       react-leaflet:
         specifier: ^4.2.1
         version: 4.2.1(leaflet@1.9.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      sharp:
+        specifier: 0.32.6
+        version: 0.32.6
     devDependencies:
       '@types/leaflet':
         specifier: ^1.9.12
         version: 1.9.12
       '@types/react':
-        specifier: ^18.3.1
+        specifier: ^18.3.10
         version: 18.3.10
       '@types/react-dom':
         specifier: ^18.3.0
@@ -38,28 +41,28 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@vitejs/plugin-react':
-        specifier: ^4.2.1
+        specifier: ^4.3.1
         version: 4.3.1(vite@5.4.8(terser@5.34.1))
       eslint:
-        specifier: ^8.57.0
+        specifier: ^8.57.1
         version: 8.57.1
       eslint-plugin-react:
-        specifier: ^7.34.1
+        specifier: ^7.37.0
         version: 7.37.0(eslint@8.57.1)
       eslint-plugin-react-hooks:
         specifier: ^4.6.2
         version: 4.6.2(eslint@8.57.1)
       eslint-plugin-react-refresh:
-        specifier: ^0.4.6
+        specifier: ^0.4.12
         version: 0.4.12(eslint@8.57.1)
       globals:
         specifier: ^15.9.0
         version: 15.9.0
       vite:
-        specifier: ^5.2.10
+        specifier: ^5.4.8
         version: 5.4.8(terser@5.34.1)
       vite-plugin-pwa:
-        specifier: ^0.20.0
+        specifier: ^0.20.5
         version: 0.20.5(@vite-pwa/assets-generator@0.2.6)(vite@5.4.8(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0)
       workbox-core:
         specifier: ^7.1.0
